@@ -14,8 +14,8 @@ const auto_send_message = async () => {
 
 
     await page.waitFor(1000);
-    await page.type('[name=username]', 'shinminah357159@gmail.com')
-    await page.type('[name=password]', 'zaytsev@0')
+    await page.type('[name=username]', 'your_email')
+    await page.type('[name=password]', 'your_password')
     await page.click('[type=submit]');
     await page.waitFor(2000)
 
@@ -23,10 +23,11 @@ const auto_send_message = async () => {
     await page.waitFor(2000);
 
     await page.evaluate(async () => {
-        const dung_xi_chat = document.getElementsByClassName('-qQT3 rOtsg')[1]
-        if (!dung_xi_chat)
+        // open devtools, find className for a tags(friends)
+        const friend= document.getElementsByClassName('your_class_name_in_chat_box')[1]
+        if (!friend)
             return null;
-        return dung_xi_chat.click()
+        return friend.click()
 
 
     });
@@ -37,7 +38,7 @@ const auto_send_message = async () => {
     //  setInterval(async () => {
     // await page.waitFor(2000);
     const message = await page.waitForSelector("textarea");
-    await message.type("Sorry about that..");
+    await message.type("your_messsage");
     await page.waitFor(500)
     // await page.keyboard.press('Enter');
 
